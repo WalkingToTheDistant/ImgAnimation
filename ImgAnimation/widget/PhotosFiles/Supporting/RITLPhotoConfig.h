@@ -42,7 +42,7 @@ alpha:1.0]
 #define RITLPhotoDeselectedImage ([UIImage imageNamed:RITLPhotoDeselectedName])
 
 
-
+#import <Photos/Photos.h>
 
 //**************** 进行通用回调的block ***************
 typedef void(^YPPhotoDidSelectedBlock)(NSArray <UIImage *> *);

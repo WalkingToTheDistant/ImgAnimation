@@ -8,6 +8,7 @@
 
 #import "UIBar+RITLPhotos.h"
 #import <objc/runtime.h>
+#import "UIView+RITLFrameChanged.h"
 
 static NSString * key;
 

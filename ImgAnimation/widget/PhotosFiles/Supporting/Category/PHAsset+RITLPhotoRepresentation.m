@@ -8,7 +8,13 @@
 
 #import "PHAsset+RITLPhotoRepresentation.h"
 #import <objc/runtime.h>
-
+#import "RITLPhotoStore.h"
+#import <Photos/Photos.h>
+#import "MLeaksFinder.h"
+//#import "YPPhotoDefines.h"
+#import "RITLPhotoConfig.h"
+#import "Masonry.h"
+#import "UIView+RITLFrameChanged.h"
 #import "PHImageRequestOptions+RITLPhotoRepresentation.h"
 
 @implementation PHAsset (RITLPhotoRepresentation)

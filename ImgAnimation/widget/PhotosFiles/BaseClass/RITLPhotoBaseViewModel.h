@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RITLPhotoPublicViewModel.h"
+#import "RITLPhotoConfig.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

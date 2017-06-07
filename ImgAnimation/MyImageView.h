@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyImageVIew : UIImageView
+@interface MyImageView : UIImageView
+
+- (void) setReplicatorView;
 
 @end

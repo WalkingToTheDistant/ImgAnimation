@@ -7,7 +7,13 @@
 //
 
 #import "RITLPhotoBottomReusableView.h"
-
+#import "RITLPhotoStore.h"
+#import <Photos/Photos.h>
+#import "MLeaksFinder.h"
+//#import "YPPhotoDefines.h"
+#import "RITLPhotoConfig.h"
+#import "Masonry.h"
+#import "UIView+RITLFrameChanged.h"
 @implementation RITLPhotoBottomReusableView
 
 -(void)dealloc

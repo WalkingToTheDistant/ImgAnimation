@@ -10,4 +10,11 @@
 
 @interface UIImageView (MyImgView)
 
+- (void) setFrameOrigin:(CGPoint)origin;
+
+- (void) setFrameSize:(CGSize)size;
+
+/** 设置图片，根据ImgView的尺寸自动调整图片的尺寸 */
+- (void) setImageForAdjustSize:(UIImage *)image;
+
 @end

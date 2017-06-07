@@ -9,7 +9,13 @@
 #import "RITLPhotoGroupViewModel.h"
 #import "RITLPhotoCacheManager.h"
 #import "PHAssetCollection+RITLPhotoRepresentation.h"
-
+#import "RITLPhotoStore.h"
+#import <Photos/Photos.h>
+#import "MLeaksFinder.h"
+//#import "YPPhotoDefines.h"
+#import "RITLPhotoConfig.h"
+#import "Masonry.h"
+#import "UIView+RITLFrameChanged.h"
 @interface RITLPhotoGroupViewModel ()
 
 @property (nonatomic, strong) RITLPhotoStore * photoStore;

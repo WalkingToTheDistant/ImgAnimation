@@ -10,4 +10,8 @@
 
 @interface UIAlertAction (MyAlertAction)
 
+- (void) setTag:(int)index;
+
+- (int) getTag;
+
 @end
