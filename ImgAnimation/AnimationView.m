@@ -9,7 +9,7 @@
 #import "AnimationView.h"
 #import "UIImageView+MyImgView.h"
 #import "CPublic.h"
-#import "MyImageView.h"
+#import "ReplicatorImgView.h"
 
 /** 摩擦因子 */
 const float FACTOR = 0.95f;
@@ -109,7 +109,7 @@ const float FACTOR = 0.95f;
     int centerY = self.bounds.size.height/2;
     for(UIImage *img in mAryImgs){
 
-        MyImageView *imgView = [MyImageView new];
+        ReplicatorImgView *imgView = [ReplicatorImgView new];
         [imgView setFrameSize:mImgSize];
         [imgView setCenter:CGPointMake(centerX, centerY)];
         [imgView setImage:img];

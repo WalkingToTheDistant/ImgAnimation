@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF1AF1021EC15A7000867C42 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1AF1011EC15A7000867C42 /* switch.png */; };
 		CF1AF10B1EC16DFB00867C42 /* UIAlertAction+MyAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1AF10A1EC16DFB00867C42 /* UIAlertAction+MyAlertAction.m */; };
-		CF40A1C31EE7035500A0CE94 /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF40A1C21EE7035500A0CE94 /* MyImageView.m */; };
+		CF40A1C31EE7035500A0CE94 /* ReplicatorImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF40A1C21EE7035500A0CE94 /* ReplicatorImgView.m */; };
 		CF614D4E1E9DC4D10077DAC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614D4D1E9DC4D10077DAC2 /* main.m */; };
 		CF614D511E9DC4D10077DAC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614D501E9DC4D10077DAC2 /* AppDelegate.m */; };
 		CF614D541E9DC4D10077DAC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614D531E9DC4D10077DAC2 /* ViewController.m */; };
@@ -119,8 +119,8 @@
 		CF1AF1011EC15A7000867C42 /* switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch.png; sourceTree = "<group>"; };
 		CF1AF1091EC16DFB00867C42 /* UIAlertAction+MyAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertAction+MyAlertAction.h"; sourceTree = "<group>"; };
 		CF1AF10A1EC16DFB00867C42 /* UIAlertAction+MyAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertAction+MyAlertAction.m"; sourceTree = "<group>"; };
-		CF40A1C11EE7035500A0CE94 /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageView.h; sourceTree = "<group>"; };
-		CF40A1C21EE7035500A0CE94 /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageView.m; sourceTree = "<group>"; };
+		CF40A1C11EE7035500A0CE94 /* ReplicatorImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplicatorImgView.h; sourceTree = "<group>"; };
+		CF40A1C21EE7035500A0CE94 /* ReplicatorImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplicatorImgView.m; sourceTree = "<group>"; };
 		CF5BF8FB1EE7CD98009D7C1F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CF614D491E9DC4D10077DAC2 /* ImgAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImgAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF614D4D1E9DC4D10077DAC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -345,8 +345,8 @@
 				CF614D9C1E9E820D0077DAC2 /* UIImageView+MyImgView.m */,
 				CF1AF1091EC16DFB00867C42 /* UIAlertAction+MyAlertAction.h */,
 				CF1AF10A1EC16DFB00867C42 /* UIAlertAction+MyAlertAction.m */,
-				CF40A1C11EE7035500A0CE94 /* MyImageView.h */,
-				CF40A1C21EE7035500A0CE94 /* MyImageView.m */,
+				CF40A1C11EE7035500A0CE94 /* ReplicatorImgView.h */,
+				CF40A1C21EE7035500A0CE94 /* ReplicatorImgView.m */,
 				CF614D551E9DC4D10077DAC2 /* Main.storyboard */,
 				CF614D581E9DC4D10077DAC2 /* Assets.xcassets */,
 				CF614D5A1E9DC4D10077DAC2 /* LaunchScreen.storyboard */,
@@ -841,7 +841,7 @@
 				CFE726AC1EC30D8500A79DB6 /* PHAssetCollection+RITLPhotoRepresentation.m in Sources */,
 				CF1AF10B1EC16DFB00867C42 /* UIAlertAction+MyAlertAction.m in Sources */,
 				CFE726AA1EC30D8500A79DB6 /* RITLPhotoStoreConfiguraion.m in Sources */,
-				CF40A1C31EE7035500A0CE94 /* MyImageView.m in Sources */,
+				CF40A1C31EE7035500A0CE94 /* ReplicatorImgView.m in Sources */,
 				CFE726AD1EC30D8500A79DB6 /* PHFetchResult+RITLPhotoRepresentation.m in Sources */,
 				CFE726A91EC30D8500A79DB6 /* RITLPhotoStore.m in Sources */,
 				CFE726AE1EC30D8500A79DB6 /* PHImageRequestOptions+RITLPhotoRepresentation.m in Sources */,

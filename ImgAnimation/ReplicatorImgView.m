@@ -6,19 +6,12 @@
 //  Copyright © 2017年 LHJ. All rights reserved.
 //
 
-#import "MyImageView.h"
+#import "ReplicatorImgView.h"
 
-@implementation MyImageView
+@implementation ReplicatorImgView
 {
-    CALayer *mLayerReplicator;
+    CALayer         *mLayerReplicator;
     CAGradientLayer *mLayerGradient;
-}
-- (void) layoutSubviews
-{
-    [super layoutSubviews];
-    if(CGRectIsEmpty(self.frame) == YES){ return; }
-    
-    
 }
 - (void) setImage:(UIImage *)image
 {
