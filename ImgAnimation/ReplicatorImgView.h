@@ -12,4 +12,6 @@
 
 - (void) setReplicatorView;
 
+- (void) setIsShowReplicatorView:(BOOL)isShow;
+
 @end

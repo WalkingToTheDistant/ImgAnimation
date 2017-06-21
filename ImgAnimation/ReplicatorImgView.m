@@ -57,5 +57,11 @@
 
     [self.layer addSublayer:mLayerReplicator];
 }
+- (void) setIsShowReplicatorView:(BOOL)isShow
+{
+    if(mLayerReplicator != nil){
+        [mLayerReplicator setHidden:!isShow];
+    }
+}
 
 @end

@@ -11,6 +11,21 @@
 #import "CPublic.h"
 #import "ReplicatorImgView.h"
 
+@interface TransformObj : NSObject
+
+@property(nonatomic, assign) CATransform3D mTransform3D;
+
+@property(nonatomic, assign) BOOL mIsShowLayer;
+
+@end
+
+@implementation TransformObj
+
+@synthesize mIsShowLayer;
+@synthesize mTransform3D;
+
+@end
+
 /** 摩擦因子 */
 const float FACTOR = 0.95f;
 
@@ -27,7 +42,7 @@ const float FACTOR = 0.95f;
     int mDistanceIndex;
     int mItemWidth;
     int mNumOfImgs;
-    NSArray<UIView*> *mAryImgViews;
+    NSArray<ReplicatorImgView*> *mAryImgViews;
     CGPoint mPreMove;
     
     /* 手势结束后的惯性滑动 */
@@ -37,6 +52,7 @@ const float FACTOR = 0.95f;
     CGFloat mRangeForScrollX;
     BOOL mIsFixureLoc;
     int mFixureLocIndex;
+    int mWidthForScreen;
 }
 
 @synthesize mAryImgs;
@@ -59,6 +75,7 @@ const float FACTOR = 0.95f;
     int height = frame.size.height*5/10;
     int width = height * 2/3;
     mImgSize = CGSizeMake(width, height);
+    mWidthForScreen = [UIScreen mainScreen].bounds.size.width + mImgSize.width;
 }
 - (void) initData
 {
@@ -104,11 +121,10 @@ const float FACTOR = 0.95f;
     }
     mAryImgViews = nil;
     
-    NSMutableArray<UIView*> *muAryImgViews = [NSMutableArray new];
+    NSMutableArray<ReplicatorImgView*> *muAryImgViews = [NSMutableArray new];
     int centerX = self.bounds.size.width/2;
     int centerY = self.bounds.size.height/2;
     for(UIImage *img in mAryImgs){
-
         ReplicatorImgView *imgView = [ReplicatorImgView new];
         [imgView setFrameSize:mImgSize];
         [imgView setCenter:CGPointMake(centerX, centerY)];
@@ -150,12 +166,14 @@ const float FACTOR = 0.95f;
 {
     if(mAryImgViews != nil){
         for(int i=0; i<mAryImgViews.count; i+=1){
-            UIView *view = mAryImgViews[i];
-            view.layer.transform = [self updateTransformWithIndex:i];
+            ReplicatorImgView *view = (ReplicatorImgView*)mAryImgViews[i];
+            TransformObj *obj= [self updateTransformWithIndex:i];
+            view.layer.transform = obj.mTransform3D;
+            [view setIsShowReplicatorView:obj.mIsShowLayer];
         }
     }
 }
-- (CATransform3D) updateTransformWithIndex:(int)index
+- (TransformObj*) updateTransformWithIndex:(int)index
 {
     CGFloat offset = [self handleOffsetWithIndex:index];
     return [self updateTransformWithOffset:offset];
@@ -171,13 +189,22 @@ const float FACTOR = 0.95f;
     }
     return result;
 }
-- (CATransform3D) updateTransformWithOffset:(float)offset
+- (TransformObj*) updateTransformWithOffset:(float)offset
 {
+    TransformObj *objResult = [TransformObj new];
+    objResult.mIsShowLayer = YES;
     CATransform3D transform = CATransform3DIdentity;
     transform.m34 = -1.0f/500.0f;
     switch(mAnimationType){
         case AnimationType_Line:{
-            transform = CATransform3DTranslate(transform, offset * mItemWidth, 0, 0);
+            float x = offset * mItemWidth;
+            transform = CATransform3DTranslate(transform, x, 0, 0);
+            if(x >= -mWidthForScreen && x <= mWidthForScreen){
+                objResult.mIsShowLayer = YES;
+            } else {
+                objResult.mIsShowLayer = NO;
+            }
+            
             break;
         }
         case AnimationType_Cask_1:
@@ -198,6 +225,12 @@ const float FACTOR = 0.95f;
             transform = CATransform3DTranslate(transform, 0.f, 0, -radius);
             transform = CATransform3DRotate(transform, angleForTrans, 0, 1.0f, 0);
             transform = CATransform3DTranslate(transform, 0.f, y, radius);
+            if(angleForTrans >=-M_PI_4 && angleForTrans <= M_PI_4){
+                objResult.mIsShowLayer = YES;
+            } else {
+                objResult.mIsShowLayer = NO;
+            }
+            
             break;
         }
         case AnimationType_Circle_1:
@@ -208,11 +241,20 @@ const float FACTOR = 0.95f;
             float angleForTrans = offset * angle * 2; // 位移的角度
             float x = sinf(angleForTrans) * radius;
             float y = 0.0f;
-            float z = cosf(angleForTrans) * radius - radius; // 减去 radius 是为了圆点移到后面
+            float temp = cosf(angleForTrans);
+            float z = temp * radius - radius; // 减去 radius 是为了圆点移到后面
             if(mAnimationType == AnimationType_Circle_2){
                 y = (cosf(angleForTrans) * radius - radius)/2 + 40;
             }
             transform = CATransform3DTranslate(transform, x, y, z);
+            if(temp >= 0.7){ // cos 45度/ 315度 = 0.7 ，大于45度、小于315度的都不用显示倒影
+               if(x >= -mWidthForScreen && x <= mWidthForScreen){
+                objResult.mIsShowLayer = YES;
+               }
+            } else {
+                objResult.mIsShowLayer = NO;
+            }
+            
             break;
         }
         case AnimationType_Line_1:
@@ -227,10 +269,17 @@ const float FACTOR = 0.95f;
             angle *= (fabs(offset)<=1)? -angle*offset : -angle*1*offset/fabs(offset);
             transform = CATransform3DTranslate(transform, x, y, 0);
             transform = CATransform3DRotate(transform, angle, 0, 1.0f, 0);
+            if(x >= -mWidthForScreen && x <= mWidthForScreen){
+                objResult.mIsShowLayer = YES;
+            } else {
+                objResult.mIsShowLayer = NO;
+            }
+            
             break;
         }
     }
-    return transform;
+    objResult.mTransform3D = transform;
+    return objResult;
 }
 - (void) handleScrollValueRange
 {

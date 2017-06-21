@@ -131,7 +131,7 @@ typedef enum : NSInteger{
     });
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [wkAniView setAryImgs:aryImgs];
-        [wkAniView setAnimationType:AnimationType_Line];
+        [wkAniView setAnimationType:AnimationType_Cask_3];
         [wkAniView setNeedsLayout];
         [wkAniView layoutSubviews];
     });
